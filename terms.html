@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Términos de Servicio — SyntaxQuest</title>
+<meta name="description" content="Términos de Servicio de SyntaxQuest. Reglas de uso, suscripciones, contenido y responsabilidades." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐙%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans: ['Space Grotesk', 'system-ui', 'sans-serif'] },
+    colors: { primary: '#00D4FF', secondary: '#8B5CF6' },
+  } } };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a0f; color: #e5e7eb; font-family: 'Space Grotesk', sans-serif; }
+  .grid-bg {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,212,255,.12), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(139,92,246,.15), transparent 45%);
+  }
+  .text-gradient { background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .glass { background: rgba(255,255,255,.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.08); }
+  .btn-primary { background: linear-gradient(135deg, #00D4FF, #8B5CF6); box-shadow: 0 10px 40px -10px rgba(0,212,255,.6); transition: all .3s; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  article h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #fff; scroll-margin-top: 6rem; }
+  article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: .5rem; color: #e5e7eb; }
+  article p { margin-bottom: 1rem; color: #cbd5e1; line-height: 1.75; }
+  article ul { margin-bottom: 1rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+  article ul li { list-style: disc; margin-bottom: .25rem; }
+  article a { color: #00D4FF; text-decoration: underline; text-underline-offset: 3px; }
+  article a:hover { color: #8B5CF6; }
+  article .legal { background: rgba(255,107,107,.05); border-left: 3px solid #FF6B6B; padding: 1rem 1.25rem; border-radius: .5rem; font-size: .875rem; color: #cbd5e1; margin: 1.5rem 0; }
+  .toc a { display: block; padding: .35rem 0; color: #94a3b8; font-size: .875rem; transition: color .2s; border-left: 2px solid transparent; padding-left: .75rem; }
+  .toc a:hover { color: #00D4FF; border-color: #00D4FF; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-lg">
+      <span class="text-2xl">🐙</span>
+      <span class="text-gradient">SyntaxQuest</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+      <a href="index.html#features" class="hover:text-primary transition">Características</a>
+      <a href="index.html#courses" class="hover:text-primary transition">Cursos</a>
+      <a href="index.html#pricing" class="hover:text-primary transition">Premium</a>
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+    </div>
+    <a href="index.html#download" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold text-white">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="grid-bg pt-36 pb-16 px-6 border-b border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-sm text-gray-500 mb-4">
+      <a href="index.html" class="hover:text-primary">Inicio</a> <span class="mx-2">›</span> Términos de Servicio
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Términos de <span class="text-gradient">Servicio</span></h1>
+    <p class="text-gray-400">Última actualización: Mayo 2026 · Versión 1.1</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-[260px_1fr] gap-12">
+  <!-- TOC -->
+  <aside class="lg:sticky lg:top-24 lg:self-start">
+    <div class="glass rounded-xl p-5">
+      <p class="text-xs uppercase tracking-widest text-gray-500 mb-3">Contenido</p>
+      <nav class="toc">
+        <a href="#accept">1. Aceptación</a>
+        <a href="#service">2. Descripción del servicio</a>
+        <a href="#accounts">3. Elegibilidad y cuentas</a>
+        <a href="#subs">4. Suscripciones y compras</a>
+        <a href="#use">5. Uso aceptable</a>
+        <a href="#edu">6. Contenido educativo y tutor IA</a>
+        <a href="#ugc">7. Contenido de usuario</a>
+        <a href="#ip">8. Propiedad intelectual</a>
+        <a href="#avail">9. Disponibilidad</a>
+        <a href="#term">10. Suspensión y terminación</a>
+        <a href="#third">11. Servicios de terceros</a>
+        <a href="#warranty">12. Renuncias de garantía</a>
+        <a href="#liability">13. Limitación de responsabilidad</a>
+        <a href="#indem">14. Indemnización</a>
+        <a href="#law">15. Ley aplicable</a>
+        <a href="#changes">16. Cambios</a>
+        <a href="#general">17. Disposiciones generales</a>
+        <a href="#apple">18. EULA y Apple</a>
+        <a href="#contact">19. Contacto</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- BODY -->
+  <article class="max-w-3xl">
+
+    <h2 id="accept">1. Aceptación de términos</h2>
+    <p>Al descargar, instalar, acceder o usar SyntaxQuest ("la App"), operada por <strong>Altech Dev</strong>, aceptas estos Términos de Servicio ("Términos"). Si no estás de acuerdo, no uses la App. Si usas la App en nombre de otra persona u organización, declaras tener autoridad para aceptar estos Términos por ella.</p>
+
+    <h2 id="service">2. Descripción del servicio</h2>
+    <p>SyntaxQuest es una aplicación móvil educativa que enseña programación, cloud, DevOps, seguridad y habilidades técnicas relacionadas mediante lecciones, ejercicios, retos, funciones comunitarias, recompensas, práctica de código y tutoría asistida por IA. La App puede incluir funciones gratuitas, suscripciones pagadas, compras consumibles, anuncios y funciones experimentales. También ofrecemos un sitio web informativo en <a href="index.html">syntaxquest.app</a>.</p>
+
+    <h2 id="accounts">3. Elegibilidad y cuentas</h2>
+
+    <h3>3.1 Elegibilidad</h3>
+    <p>Debes poder aceptar legalmente estos Términos. Si eres menor de edad, puedes usar la App solo con permiso y supervisión de un padre, madre o tutor legal. La App no está dirigida a menores de 13 años.</p>
+
+    <h3>3.2 Uso como invitado y cuentas</h3>
+    <p>Puedes usar ciertas funciones como invitado o crear una cuenta. El progreso de invitado se almacena localmente y puede perderse si se elimina la App, se restablece el dispositivo o se borran los datos locales. Las funciones de cuenta pueden requerir acceso a internet y autenticación mediante Apple, Google u otro proveedor soportado.</p>
+
+    <h3>3.3 Responsabilidad de la cuenta</h3>
+    <p>Eres responsable de tus credenciales, seguridad del dispositivo y actividad bajo tu cuenta. Avísanos si sospechas acceso no autorizado. Podemos rechazar, recuperar o modificar nombres de usuario que sean ofensivos, engañosos, infractores, impersonen a terceros o resulten inapropiados.</p>
+
+    <h2 id="subs">4. Suscripciones, compras e items virtuales</h2>
+
+    <h3>4.1 Funciones Premium</h3>
+    <p>Las suscripciones <strong>Premium</strong> y <strong>Super Premium</strong> pueden desbloquear lecciones adicionales, experiencia sin anuncios, uso del tutor, aprendizaje guiado, recompensas u otras funciones descritas en la App al momento de la compra. Las funciones pueden variar por país, plataforma, nivel de producto, versión de la app y disponibilidad técnica.</p>
+
+    <h3>4.2 Suscripciones con renovación automática</h3>
+    <p>Las suscripciones se facturan mediante la App Store de Apple. Se renuevan automáticamente salvo que se cancelen al menos <strong>24 horas antes</strong> del final del período actual. Tu cuenta de Apple ID puede recibir el cargo de renovación dentro de las 24 horas previas al final del período actual. Puedes gestionar o cancelar suscripciones desde la configuración de tu cuenta de Apple.</p>
+
+    <h3>4.3 Pruebas, promociones y cambios de precio</h3>
+    <p>Las pruebas gratuitas (incluyendo nuestro <strong>trial de 7 días</strong>), ofertas introductorias, cupones o promociones pueden estar disponibles solo para usuarios elegibles y pueden estar limitadas por Apple o por nosotros. Cada Apple ID puede usar el trial gratuito una sola vez por grupo de suscripción. Precios, impuestos y monedas pueden variar según país. Apple gestionará avisos y consentimientos requeridos para aumentos de precio cuando corresponda.</p>
+
+    <h3>4.4 Reembolsos</h3>
+    <p>Las compras son procesadas por Apple. Las solicitudes de reembolso se gestionan a través de <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a> bajo las políticas y procedimientos de Apple. No garantizamos reembolsos, créditos o reembolsos por periodos parciales salvo que lo exija la ley aplicable o lo conceda Apple.</p>
+
+    <h3>4.5 Gemas, recompensas y cosméticos</h3>
+    <p>Gemas, congeladores de racha, cosméticos, insignias y otros items virtuales son <strong>licencias limitadas, revocables y no transferibles</strong> para mecánicas de aprendizaje y entretenimiento dentro de la App. No tienen valor en efectivo, no son propiedad, no pueden venderse ni intercambiarse fuera de la App y pueden modificarse, balancearse, eliminarse o discontinuarse. Las compras consumibles son finales salvo donde la ley o las políticas de App Store exijan lo contrario.</p>
+
+    <h2 id="use">5. Uso aceptable</h2>
+    <p>Aceptas no:</p>
+    <ul>
+      <li>Usar la App para actividades ilegales, dañinas, fraudulentas, engañosas, abusivas, acosadoras o infractoras</li>
+      <li>Hacer trampas, manipular rankings, automatizar juego, explotar errores o interferir con el uso justo de la App</li>
+      <li>Realizar ingeniería inversa, descompilar, desensamblar, scrapear, rastrear, copiar o evadir protecciones técnicas salvo donde la ley lo permita expresamente</li>
+      <li>Interferir con servidores, límites de uso, sistemas de seguridad, anuncios, compras, suscripciones o verificaciones de beneficios</li>
+      <li>Subir o enviar malware, secretos que no estás autorizado a compartir, llaves privadas, código dañino o contenido que viole derechos de terceros</li>
+      <li>Abusar del tutor IA, funciones comunitarias, canales de soporte o herramientas de reporte</li>
+      <li>Impersonar a otros, declarar afiliaciones falsas o usar nombres de usuario engañosos</li>
+      <li>Usar la App para generar o facilitar ataques, acceso no autorizado, robo de credenciales o daño en el mundo real</li>
+      <li>Compartir tu cuenta con terceros o usarla para reventa de acceso a contenido</li>
+    </ul>
+
+    <h2 id="edu">6. Contenido educativo y tutor IA</h2>
+    <p>La App proporciona contenido educativo y asistencia automatizada con fines de aprendizaje. <strong>Lecciones, ejercicios, pistas, explicaciones generadas, retroalimentación de código y respuestas del tutor IA pueden ser incompletas, desactualizadas o incorrectas.</strong> Eres responsable de revisar, probar y validar código o decisiones técnicas antes de usarlas en entornos reales.</p>
+    <div class="legal">
+      <strong>Aviso importante:</strong> La App no proporciona asesoría legal, financiera, médica, auditoría de seguridad, certificación profesional ni ingeniería profesional. Los certificados de finalización emitidos por SyntaxQuest reconocen completar el contenido de la App, pero no constituyen una credencial académica oficial ni acreditación profesional reconocida.
+    </div>
+
+    <h2 id="ugc">7. Contenido de usuario y funciones comunitarias</h2>
+    <p>Conservas la propiedad del contenido que envías, como comentarios, fragmentos de código, nombres de usuario, reportes y feedback. Otorgas a SyntaxQuest una licencia mundial, no exclusiva y libre de regalías para alojar, almacenar, reproducir, mostrar, moderar, adaptar y usar ese contenido según sea necesario para operar, mejorar, promocionar y proteger la App. Declaras que tienes los derechos necesarios para enviar tu contenido. Podemos eliminar, restringir o reportar contenido que viole estos Términos o la ley aplicable.</p>
+
+    <h2 id="ip">8. Propiedad intelectual</h2>
+    <p>SyntaxQuest, incluyendo software, lecciones, ejercicios, diseños, gráficos, logos (incluida la mascota Pulpo Coder), currículo, mecánicas de juego, textos, sonidos y otros materiales, pertenece a Altech Dev o sus licenciantes y está protegido por leyes de propiedad intelectual. Salvo la licencia limitada para usar la App, no se te transfiere ningún derecho. No puedes reproducir, distribuir, vender, sublicenciar o crear obras derivadas del contenido de la App sin permiso.</p>
+
+    <h2 id="avail">9. Disponibilidad y cambios</h2>
+    <p>Podemos actualizar, modificar, suspender, limitar o discontinuar cualquier función, curso, recompensa, beneficio de suscripción, modelo de IA, experiencia publicitaria o función comunitaria en cualquier momento. No garantizamos que la App sea ininterrumpida, libre de errores, compatible con todos los dispositivos o disponible en todos los países. Algunas funciones requieren internet, servicios de Apple, servicios de Google o disponibilidad de proveedores externos.</p>
+
+    <h2 id="term">10. Moderación, suspensión y terminación</h2>
+    <p>Podemos advertir, restringir, suspender o terminar el acceso si creemos que violaste estos Términos, generaste riesgo, abusaste de la App, infringiste derechos, causaste preocupaciones de seguridad o usaste la App de forma dañina para otros usuarios o el servicio. Puedes dejar de usar la App o solicitar eliminación de cuenta en cualquier momento. La terminación no te da automáticamente derecho a reembolsos salvo que lo exija la ley aplicable o las políticas de App Store.</p>
+
+    <h2 id="third">11. Servicios de terceros</h2>
+    <p>La App se integra con servicios como Apple, Google, Firebase, AdMob, StoreKit, Judge0 CE y proveedores de IA (DeepSeek, OpenAI). Tu uso de esos servicios puede estar sujeto a términos y políticas de privacidad separadas. No somos responsables por servicios, interrupciones, políticas, precios, prácticas de datos o contenido de terceros.</p>
+
+    <h2 id="warranty">12. Renuncias de garantía</h2>
+    <div class="legal">
+      LA APP SE PROPORCIONA "TAL CUAL" Y "SEGÚN DISPONIBILIDAD" SIN GARANTÍAS DE NINGÚN TIPO, EXPRESAS, IMPLÍCITAS O LEGALES, INCLUYENDO GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR, TITULARIDAD, NO INFRACCIÓN, EXACTITUD, DISPONIBILIDAD Y OPERACIÓN SIN ERRORES. Algunas jurisdicciones no permiten ciertas renuncias, por lo que algunas limitaciones pueden no aplicarte.
+    </div>
+
+    <h2 id="liability">13. Limitación de responsabilidad</h2>
+    <div class="legal">
+      EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY, ALTECH DEV Y SUS DESARROLLADORES, AFILIADOS, PROVEEDORES DE SERVICIO Y LICENCIANTES NO SERÁN RESPONSABLES POR DAÑOS INDIRECTOS, INCIDENTALES, ESPECIALES, CONSECUENTES, EJEMPLARES O PUNITIVOS, PÉRDIDA DE GANANCIAS, PÉRDIDA DE DATOS, PÉRDIDA DE REPUTACIÓN, INTERRUPCIÓN DEL NEGOCIO, DAÑO AL DISPOSITIVO O ACCESO NO AUTORIZADO DERIVADO DE O RELACIONADO CON LA APP. NUESTRA RESPONSABILIDAD TOTAL POR CUALQUIER RECLAMO NO EXCEDERÁ EL MAYOR ENTRE EL MONTO QUE PAGASTE POR USAR LA APP DURANTE LOS DOCE (12) MESES ANTERIORES AL RECLAMO O USD $50.
+    </div>
+
+    <h2 id="indem">14. Indemnización</h2>
+    <p>En la medida permitida por la ley, aceptas defender, indemnizar y mantener indemne a Altech Dev frente a reclamos, pérdidas, responsabilidades, daños, costos y gastos, incluyendo honorarios razonables de abogados, derivados de tu uso indebido de la App, tu contenido, tu violación de estos Términos o tu violación de la ley o derechos de terceros.</p>
+
+    <h2 id="law">15. Ley aplicable y disputas</h2>
+    <p>Estos Términos se rigen por las leyes de la <strong>República del Perú</strong>, donde está establecido Altech Dev, sin considerar reglas de conflicto de leyes, salvo que las leyes de protección al consumidor de tu país exijan lo contrario. Los tribunales de Lima, Perú tendrán autoridad exclusiva sobre disputas, salvo donde la ley aplicable te otorgue derechos obligatorios para presentar reclamos en otro lugar (por ejemplo, consumidores en la Unión Europea pueden presentar reclamos ante los tribunales de su país de residencia).</p>
+    <p>Antes de iniciar acciones legales formales, intentaremos resolver disputas de buena fe contactándonos directamente.</p>
+
+    <h2 id="changes">16. Cambios a los términos</h2>
+    <p>Podemos modificar estos Términos. Si los cambios son materiales, notificaremos a través de la App, la ficha de App Store, el sitio web u otro método razonable con al menos 30 días de antelación cuando sea practicable. El uso continuado de la App después de que los cambios entren en vigor significa que aceptas los Términos actualizados.</p>
+
+    <h2 id="general">17. Disposiciones generales</h2>
+    <p>Si alguna disposición es inaplicable, el resto seguirá vigente. Nuestra falta de exigencia de una disposición no constituye renuncia. No puedes ceder estos Términos sin nuestro consentimiento. Podemos cederlos como parte de una fusión, adquisición, reestructuración o transferencia de activos. Estos Términos, la <a href="privacy.html">Política de Privacidad</a> y el EULA de Apple forman el acuerdo aplicable entre tú y Altech Dev para el uso de la App.</p>
+
+    <h2 id="apple">18. EULA, App Store y Apple</h2>
+    <p>El uso de la App también está sujeto al <strong>Acuerdo de Licencia de Usuario Final estándar de Apple (Standard EULA)</strong> disponible en <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">apple.com/legal/internet-services/itunes/dev/stdeula</a>, salvo que apliquemos un EULA personalizado. Apple y sus subsidiarias son terceros beneficiarios de estos Términos en lo relativo a la App distribuida a través de la App Store, y pueden hacerlos cumplir contra ti como tales. Apple no es responsable por la App ni por reclamos relacionados.</p>
+
+    <h2 id="contact">19. Contacto</h2>
+    <p>Para preguntas sobre estos Términos:</p>
+    <p><strong>Altech Dev</strong><br/>
+    Email: <a href="mailto:support@altechdev.test">support@altechdev.test</a><br/>
+    Asunto sugerido: "Términos — [tu consulta]"</p>
+    <p>Para soporte general visita nuestro <a href="support.html">Centro de Soporte</a>.</p>
+
+    <hr class="my-12 border-white/10" />
+    <div class="flex flex-wrap gap-3 text-sm">
+      <a href="privacy.html" class="px-4 py-2 rounded-full glass hover:border-primary/40 transition">→ Política de Privacidad</a>
+      <a href="support.html" class="px-4 py-2 rounded-full glass hover:border-primary/40 transition">→ Centro de Soporte</a>
+    </div>
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🐙</span>
+      <span>© 2026 Altech Dev. Todos los derechos reservados.</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="index.html" class="hover:text-primary transition">Inicio</a>
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+      <a href="privacy.html" class="hover:text-primary transition">Privacidad</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

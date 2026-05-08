@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SyntaxQuest — Tu aventura de código comienza aquí</title>
+<meta name="description" content="App educativa para iOS que enseña programación, cloud, DevOps, bases de datos y ciberseguridad con gamificación, IA y repetición espaciada." />
+<meta property="og:title" content="SyntaxQuest" />
+<meta property="og:description" content="Aprende a programar jugando. Estilo Duolingo, pero para código." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐙%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        colors: {
+          primary: '#00D4FF',
+          secondary: '#8B5CF6',
+          xp: '#FBBF24',
+          streak: '#FF6B6B',
+          success: '#10B981',
+        },
+        animation: {
+          'float': 'float 6s ease-in-out infinite',
+          'glow': 'glow 3s ease-in-out infinite alternate',
+          'fade-up': 'fadeUp 0.8s ease-out forwards',
+        },
+        keyframes: {
+          float: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-20px)' } },
+          glow: { '0%': { filter: 'drop-shadow(0 0 20px rgba(0,212,255,.4))' }, '100%': { filter: 'drop-shadow(0 0 60px rgba(139,92,246,.6))' } },
+          fadeUp: { '0%': { opacity: 0, transform: 'translateY(30px)' }, '100%': { opacity: 1, transform: 'translateY(0)' } },
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a0f; color: #e5e7eb; font-family: 'Space Grotesk', sans-serif; }
+  .grid-bg {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,212,255,.15), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(139,92,246,.18), transparent 45%),
+      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+    background-size: auto, auto, 60px 60px, 60px 60px;
+  }
+  .text-gradient {
+    background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .glass {
+    background: rgba(255,255,255,.03);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,.08);
+  }
+  .card-hover { transition: all .35s cubic-bezier(.4,0,.2,1); }
+  .card-hover:hover { transform: translateY(-6px); border-color: rgba(0,212,255,.4); box-shadow: 0 20px 60px -20px rgba(0,212,255,.3); }
+  .btn-primary {
+    background: linear-gradient(135deg, #00D4FF, #8B5CF6);
+    box-shadow: 0 10px 40px -10px rgba(0,212,255,.6);
+    transition: all .3s;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 15px 50px -10px rgba(139,92,246,.7); }
+  .reveal { opacity: 0; transform: translateY(30px); transition: all .8s cubic-bezier(.4,0,.2,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  .code-window { background: #0d1117; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; overflow: hidden; }
+  .code-dot { width: 12px; height: 12px; border-radius: 50%; }
+  .pulpo { font-size: 9rem; line-height: 1; display: inline-block; }
+  @media (min-width: 768px) { .pulpo { font-size: 14rem; } }
+  .marquee { display: flex; gap: 3rem; animation: scroll 30s linear infinite; }
+  @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-bold text-lg">
+      <span class="text-2xl">🐙</span>
+      <span class="text-gradient">SyntaxQuest</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+      <a href="#features" class="hover:text-primary transition">Características</a>
+      <a href="#courses" class="hover:text-primary transition">Cursos</a>
+      <a href="#gamification" class="hover:text-primary transition">Gamificación</a>
+      <a href="#pricing" class="hover:text-primary transition">Premium</a>
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+    </div>
+    <a href="#download" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold text-white">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="grid-bg pt-32 pb-20 px-6 overflow-hidden relative">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <div class="reveal">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-medium mb-6">
+        <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+        Próximamente en App Store
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold leading-[1.05] mb-6">
+        Tu aventura<br/>de <span class="text-gradient">código</span><br/>comienza aquí
+      </h1>
+      <p class="text-lg text-gray-400 mb-8 max-w-lg">
+        Aprende programación, cloud, DevOps, bases de datos y ciberseguridad con gamificación, IA y repetición espaciada. Estilo Duolingo, pero para código.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#download" class="btn-primary px-8 py-4 rounded-full font-semibold text-white flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+          App Store
+        </a>
+        <a href="#features" class="px-8 py-4 rounded-full font-semibold border border-white/10 hover:bg-white/5 transition flex items-center gap-2">
+          Ver características
+        </a>
+      </div>
+      <div class="flex items-center gap-8 mt-12 text-sm text-gray-400">
+        <div><span class="text-2xl font-bold text-white">22+</span><br/>Cursos</div>
+        <div><span class="text-2xl font-bold text-white">9</span><br/>Lenguajes</div>
+        <div><span class="text-2xl font-bold text-white">7</span><br/>Tipos de ejercicios</div>
+        <div><span class="text-2xl font-bold text-white">2</span><br/>Idiomas</div>
+      </div>
+    </div>
+
+    <div class="relative reveal">
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl rounded-full"></div>
+      <div class="relative flex flex-col items-center">
+        <div class="pulpo animate-float animate-glow select-none">🐙</div>
+        <div class="code-window w-full max-w-md mt-4 font-mono text-sm">
+          <div class="flex items-center gap-2 px-4 py-3 border-b border-white/5">
+            <div class="code-dot bg-red-500/60"></div>
+            <div class="code-dot bg-yellow-500/60"></div>
+            <div class="code-dot bg-green-500/60"></div>
+            <span class="ml-2 text-xs text-gray-500">lesson_01.py</span>
+          </div>
+          <div class="p-5 leading-relaxed">
+            <div><span class="text-purple-400">def</span> <span class="text-primary">aprender</span>():</div>
+            <div class="pl-4"><span class="text-gray-500"># +20 XP por respuesta correcta</span></div>
+            <div class="pl-4"><span class="text-purple-400">while</span> curioso:</div>
+            <div class="pl-8"><span class="text-primary">resolver_ejercicio</span>()</div>
+            <div class="pl-8"><span class="text-primary">subir_de_nivel</span>()</div>
+            <div class="pl-4"><span class="text-purple-400">return</span> <span class="text-success">"🏆 ¡Maestro!"</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANGUAGES MARQUEE -->
+<section class="py-12 border-y border-white/5 overflow-hidden">
+  <p class="text-center text-xs uppercase tracking-widest text-gray-500 mb-6">Aprende los lenguajes y tecnologías más demandados</p>
+  <div class="marquee whitespace-nowrap">
+    <div class="flex gap-12 text-3xl">
+      <span>🐍 Python</span><span>☕ Java</span><span>⚡ JavaScript</span><span>🦅 Swift</span><span>🟣 Kotlin</span><span>🔵 C++</span><span>🎯 C#</span><span>🌐 HTML/CSS</span><span>🟧 AWS</span><span>🟦 GCP</span><span>🔷 Azure</span><span>🐳 Docker</span><span>☸️ Kubernetes</span><span>🗃 SQL</span><span>🐘 PostgreSQL</span><span>🍃 MongoDB</span><span>🛡 Hacking</span>
+    </div>
+    <div class="flex gap-12 text-3xl" aria-hidden="true">
+      <span>🐍 Python</span><span>☕ Java</span><span>⚡ JavaScript</span><span>🦅 Swift</span><span>🟣 Kotlin</span><span>🔵 C++</span><span>🎯 C#</span><span>🌐 HTML/CSS</span><span>🟧 AWS</span><span>🟦 GCP</span><span>🔷 Azure</span><span>🐳 Docker</span><span>☸️ Kubernetes</span><span>🗃 SQL</span><span>🐘 PostgreSQL</span><span>🍃 MongoDB</span><span>🛡 Hacking</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-3">Características</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Todo lo que necesitas para <span class="text-gradient">dominar el código</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Una experiencia completa diseñada para que aprendas más rápido, recuerdes más y te diviertas en el camino.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">🤖</div>
+        <h3 class="text-xl font-semibold mb-2">Tutor IA Pulpo Coder</h3>
+        <p class="text-gray-400 text-sm">Asistente conversacional con DeepSeek que resuelve dudas de código en tiempo real, adaptado a tu nivel.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">🧭</div>
+        <h3 class="text-xl font-semibold mb-2">Guided Learning con IA</h3>
+        <p class="text-gray-400 text-sm">Lecciones y quizzes generados por tema. Pide cualquier concepto y la IA te arma una ruta personalizada.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">🧠</div>
+        <h3 class="text-xl font-semibold mb-2">Repetición espaciada SM-2</h3>
+        <p class="text-gray-400 text-sm">Algoritmo científico que programa revisiones óptimas para que el conocimiento se quede contigo.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">💻</div>
+        <h3 class="text-xl font-semibold mb-2">Playground real</h3>
+        <p class="text-gray-400 text-sm">Ejecuta JS, SQL, HTML y Python local. Java, Swift, Kotlin, C++ y C# vía Judge0 CE en la nube.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">📊</div>
+        <h3 class="text-xl font-semibold mb-2">Aprendizaje adaptativo</h3>
+        <p class="text-gray-400 text-sm">Detecta tus áreas débiles automáticamente y recomienda lecciones de refuerzo justo cuando las necesitas.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">📜</div>
+        <h3 class="text-xl font-semibold mb-2">Certificados PDF</h3>
+        <p class="text-gray-400 text-sm">Completa un curso, descarga un certificado firmado desde el backend y compártelo en LinkedIn.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">📴</div>
+        <h3 class="text-xl font-semibold mb-2">Modo offline</h3>
+        <p class="text-gray-400 text-sm">Descarga cursos y aprende sin conexión. Tu progreso se sincroniza automáticamente al volver online.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">⌚</div>
+        <h3 class="text-xl font-semibold mb-2">Apple Watch + Widgets</h3>
+        <p class="text-gray-400 text-sm">Companion watchOS y widgets de racha y progreso siempre visibles en tu pantalla de inicio.</p>
+      </div>
+      <div class="glass rounded-2xl p-7 card-hover reveal">
+        <div class="text-4xl mb-4">🌍</div>
+        <h3 class="text-xl font-semibold mb-2">100% bilingüe</h3>
+        <p class="text-gray-400 text-sm">Todo el contenido disponible en Español e Inglés. Cambia el idioma cuando quieras.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" class="py-24 px-6 bg-gradient-to-b from-transparent via-secondary/5 to-transparent">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-3">Cursos</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">22+ rutas de aprendizaje</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Desde tus primeras líneas de código hasta arquitecturas cloud y pentesting profesional.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="font-semibold mb-3 text-primary">Programación</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>🐍 Python</li><li>☕ Java</li><li>⚡ JavaScript</li><li>🦅 Swift</li><li>🟣 Kotlin</li><li>🔵 C++</li><li>🎯 C#</li><li>🌐 HTML/CSS</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="font-semibold mb-3 text-primary">Cloud</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>☁️ Cloud Fundamentals</li><li>🟧 AWS</li><li>🟦 Google Cloud</li><li>🔷 Azure</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="font-semibold mb-3 text-primary">DevOps</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>🐳 Docker</li><li>☸️ Kubernetes</li><li>🏗 Terraform</li><li>🔄 CI/CD</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="font-semibold mb-3 text-primary">Bases de datos</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>🗃 SQL</li><li>🐘 PostgreSQL</li><li>🍃 MongoDB</li><li>🟥 Redis</li>
+        </ul>
+      </div>
+      <div class="glass rounded-2xl p-6 reveal">
+        <h3 class="font-semibold mb-3 text-primary">Ciberseguridad</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>🛡 Ethical Hacking</li><li>🔐 Network Security</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-6 reveal">
+      <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-gradient mb-1">7</div>
+        <div class="text-sm text-gray-400">tipos de ejercicios: opción múltiple, completar, ordenar, predecir output, debugging, mini-coding, teoría</div>
+      </div>
+      <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-gradient mb-1">⭐⭐⭐</div>
+        <div class="text-sm text-gray-400">3 niveles de dificultad: principiante, intermedio y avanzado</div>
+      </div>
+      <div class="glass rounded-2xl p-6 text-center">
+        <div class="text-3xl font-bold text-gradient mb-1">5</div>
+        <div class="text-sm text-gray-400">secciones progresivas por curso con puertas de XP para desbloquear</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMIFICATION -->
+<section id="gamification" class="py-24 px-6">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-xp text-sm font-semibold uppercase tracking-widest mb-3">Gamificación</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Aprende como si fuera un <span class="text-gradient">juego</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">XP, vidas, rachas, ligas, gemas y cosméticos. Cada lección es una victoria.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">⭐</div>
+          <h3 class="text-2xl font-semibold">XP y Niveles</h3>
+        </div>
+        <p class="text-gray-400 mb-4">Bonus por precisión, velocidad y Weekend Aura 1.5x los fines de semana.</p>
+        <div class="bg-black/40 rounded-xl p-4">
+          <div class="flex justify-between text-xs text-gray-400 mb-2"><span>Nivel 12</span><span>340 / 500 XP</span></div>
+          <div class="h-3 bg-white/5 rounded-full overflow-hidden">
+            <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: 68%"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">🔥</div>
+          <h3 class="text-2xl font-semibold">Rachas diarias</h3>
+        </div>
+        <p class="text-gray-400 mb-4">Streak Society con tiers, Streak Freezes y reparación de rachas con gemas.</p>
+        <div class="flex gap-2">
+          <div class="flex-1 bg-streak/10 border border-streak/30 rounded-lg p-3 text-center"><div class="text-2xl font-bold text-streak">47</div><div class="text-xs text-gray-400">días</div></div>
+          <div class="flex-1 bg-white/5 rounded-lg p-3 text-center"><div class="text-2xl">🧊</div><div class="text-xs text-gray-400">3 freezes</div></div>
+          <div class="flex-1 bg-white/5 rounded-lg p-3 text-center"><div class="text-2xl">🏛️</div><div class="text-xs text-gray-400">Tier Oro</div></div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">🏆</div>
+          <h3 class="text-2xl font-semibold">Ligas semanales</h3>
+        </div>
+        <p class="text-gray-400 mb-4">Compite con otros usuarios desde Bronce hasta Obsidiana basado en tu XP semanal.</p>
+        <div class="grid grid-cols-6 gap-2 text-center">
+          <div class="text-xl">🥉</div><div class="text-xl">🥈</div><div class="text-xl">🥇</div><div class="text-xl">💠</div><div class="text-xl">💎</div><div class="text-xl">🖤</div>
+        </div>
+      </div>
+
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">💎</div>
+          <h3 class="text-2xl font-semibold">Gemas y cosméticos</h3>
+        </div>
+        <p class="text-gray-400 mb-4">Gana gemas jugando y personaliza al Pulpo con 14 cosméticos en 4 rarezas.</p>
+        <div class="flex gap-2 flex-wrap">
+          <span class="px-3 py-1 rounded-full bg-gray-500/20 text-gray-300 text-xs">Common</span>
+          <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs">Rare</span>
+          <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 text-xs">Epic</span>
+          <span class="px-3 py-1 rounded-full bg-yellow-500/20 text-yellow-300 text-xs">Legendary</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="text-primary text-sm font-semibold uppercase tracking-widest mb-3">Premium</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Lleva tu aprendizaje <span class="text-gradient">al siguiente nivel</span></h2>
+      <p class="text-gray-400 max-w-2xl mx-auto mt-4">7 días gratis en todos los planes. Cancela cuando quieras.</p>
+
+      <div class="inline-flex items-center gap-1 mt-8 p-1 rounded-full glass text-sm">
+        <button id="billMonthly" class="px-5 py-2 rounded-full font-medium transition">Mensual</button>
+        <button id="billAnnual" class="px-5 py-2 rounded-full font-medium transition bg-gradient-to-r from-primary to-secondary text-white">Anual <span class="text-xs opacity-90">(ahorra 44%)</span></button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <h3 class="text-xl font-semibold mb-1">Free</h3>
+        <p class="text-gray-400 text-sm mb-6">Para empezar</p>
+        <div class="text-4xl font-bold mb-1">S/ 0</div>
+        <div class="text-sm text-gray-500 mb-6">para siempre</div>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+          <li>✓ 8 cursos de lenguajes</li>
+          <li>✓ Reto diario y ligas</li>
+          <li>✓ 5 vidas con regen</li>
+          <li class="text-gray-500">✗ Cursos DevOps / Cloud</li>
+          <li class="text-gray-500">✗ Tutor IA</li>
+        </ul>
+      </div>
+
+      <div class="glass rounded-2xl p-8 card-hover reveal relative border-primary/40" style="background: linear-gradient(180deg, rgba(0,212,255,.08), rgba(139,92,246,.05));">
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-secondary text-xs font-bold px-3 py-1 rounded-full">MÁS POPULAR</div>
+        <h3 class="text-xl font-semibold mb-1">Premium</h3>
+        <p class="text-gray-400 text-sm mb-6">Para acelerar tu progreso</p>
+        <div class="text-4xl font-bold mb-1"><span data-price-monthly="14.90" data-price-annual="8.33">S/ 8.33</span><span class="text-base text-gray-400 font-normal">/mes</span></div>
+        <div class="text-sm text-gray-500 mb-6"><span data-billing-text>S/ 99.90 al año</span></div>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+          <li>✓ <strong>13 cursos</strong> (8 lenguajes + 5 DevOps/DB)</li>
+          <li>✓ Vidas infinitas ❤️</li>
+          <li>✓ Sin anuncios</li>
+          <li>✓ 5 lecciones IA + 5 quizzes/mes</li>
+          <li>✓ +2 streak freezes/mes</li>
+          <li>✓ Playground completo</li>
+        </ul>
+        <a href="#download" class="block text-center btn-primary py-3 rounded-full font-semibold text-white">7 días gratis</a>
+      </div>
+
+      <div class="glass rounded-2xl p-8 card-hover reveal">
+        <h3 class="text-xl font-semibold mb-1">Super Premium <span class="text-xs">👑</span></h3>
+        <p class="text-gray-400 text-sm mb-6">Para profesionales</p>
+        <div class="text-4xl font-bold mb-1"><span data-price-monthly="34.90" data-price-annual="20.83">S/ 20.83</span><span class="text-base text-gray-400 font-normal">/mes</span></div>
+        <div class="text-sm text-gray-500 mb-6"><span data-billing-text-super>S/ 249.90 al año</span></div>
+        <ul class="space-y-3 text-sm text-gray-300 mb-8">
+          <li>✓ <strong>21 cursos</strong> (todo el catálogo)</li>
+          <li>✓ AWS, Azure, GCP, Kubernetes, Terraform</li>
+          <li>✓ PostgreSQL, Network Security, Hacking</li>
+          <li>✓ 30 lecciones IA + 30 quizzes/mes</li>
+          <li>✓ Tema libre con IA</li>
+          <li>✓ <strong>500 gemas/mes gratis</strong> 💎</li>
+          <li>✓ Badge Pro Max 👑</li>
+        </ul>
+        <a href="#download" class="block text-center px-5 py-3 rounded-full font-semibold border border-white/10 hover:bg-white/5 transition">7 días gratis</a>
+      </div>
+    </div>
+
+    <!-- GEM PACKS -->
+    <div class="mt-20 text-center reveal">
+      <h3 class="text-2xl md:text-3xl font-bold mb-2">Packs de gemas <span class="text-gradient">💎</span></h3>
+      <p class="text-gray-400 mb-10">Compra gemas para vidas extras, streak freezes y cosméticos.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-2">💎</div>
+          <div class="text-2xl font-bold">100</div>
+          <div class="text-xs text-gray-400 mb-3">gemas</div>
+          <div class="text-lg font-semibold text-primary">S/ 2.90</div>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-2">💎💎</div>
+          <div class="text-2xl font-bold">500 <span class="text-xs text-success font-normal">+50</span></div>
+          <div class="text-xs text-gray-400 mb-3">+10% bonus</div>
+          <div class="text-lg font-semibold text-primary">S/ 14.90</div>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover relative border-primary/30">
+          <div class="absolute -top-2 right-3 bg-gradient-to-r from-primary to-secondary text-[10px] font-bold px-2 py-0.5 rounded-full">POPULAR</div>
+          <div class="text-3xl mb-2">💎💎💎</div>
+          <div class="text-2xl font-bold">1200 <span class="text-xs text-success font-normal">+240</span></div>
+          <div class="text-xs text-gray-400 mb-3">+20% bonus</div>
+          <div class="text-lg font-semibold text-primary">S/ 29.90</div>
+        </div>
+        <div class="glass rounded-2xl p-6 card-hover">
+          <div class="text-3xl mb-2">💎💎💎💎</div>
+          <div class="text-2xl font-bold">3000</div>
+          <div class="text-xs text-xp mb-3">Mejor valor</div>
+          <div class="text-lg font-semibold text-primary">S/ 59.90</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section id="download" class="py-24 px-6 grid-bg">
+  <div class="max-w-4xl mx-auto text-center reveal">
+    <div class="pulpo animate-float mb-6">🐙</div>
+    <h2 class="text-4xl md:text-6xl font-bold mb-6">Empieza tu <span class="text-gradient">quest</span> hoy</h2>
+    <p class="text-lg text-gray-400 mb-10 max-w-xl mx-auto">SyntaxQuest llega muy pronto a la App Store. Únete y sé de los primeros en jugar.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#" class="btn-primary px-8 py-4 rounded-full font-semibold text-white flex items-center gap-2">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+        Descargar en App Store
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🐙</span>
+      <span>© 2026 Altech Dev. Todos los derechos reservados.</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+      <a href="privacy.html" class="hover:text-primary transition">Privacidad</a>
+      <a href="terms.html" class="hover:text-primary transition">Términos</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // Pricing toggle
+  const btnM = document.getElementById('billMonthly');
+  const btnA = document.getElementById('billAnnual');
+  const activeCls = ['bg-gradient-to-r','from-primary','to-secondary','text-white'];
+  function setBilling(mode) {
+    document.querySelectorAll('[data-price-monthly]').forEach((el) => {
+      el.textContent = 'S/ ' + el.dataset[mode === 'monthly' ? 'priceMonthly' : 'priceAnnual'];
+    });
+    const txt = document.querySelector('[data-billing-text]');
+    const txtSuper = document.querySelector('[data-billing-text-super]');
+    if (mode === 'monthly') { txt.textContent = 'facturado mensualmente'; txtSuper.textContent = 'facturado mensualmente'; }
+    else { txt.textContent = 'S/ 99.90 al año'; txtSuper.textContent = 'S/ 249.90 al año'; }
+    if (mode === 'monthly') { btnM.classList.add(...activeCls); btnA.classList.remove(...activeCls); }
+    else { btnA.classList.add(...activeCls); btnM.classList.remove(...activeCls); }
+  }
+  btnM.addEventListener('click', () => setBilling('monthly'));
+  btnA.addEventListener('click', () => setBilling('annual'));
+</script>
+</body>
+</html>

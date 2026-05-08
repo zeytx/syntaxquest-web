@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Política de Privacidad — SyntaxQuest</title>
+<meta name="description" content="Política de Privacidad de SyntaxQuest. Qué información recopilamos, cómo la usamos y tus derechos." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🐙%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { theme: { extend: {
+    fontFamily: { sans: ['Space Grotesk', 'system-ui', 'sans-serif'] },
+    colors: { primary: '#00D4FF', secondary: '#8B5CF6' },
+  } } };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #0a0a0f; color: #e5e7eb; font-family: 'Space Grotesk', sans-serif; }
+  .grid-bg {
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,212,255,.12), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(139,92,246,.15), transparent 45%);
+  }
+  .text-gradient { background: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  .glass { background: rgba(255,255,255,.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.08); }
+  .btn-primary { background: linear-gradient(135deg, #00D4FF, #8B5CF6); box-shadow: 0 10px 40px -10px rgba(0,212,255,.6); transition: all .3s; }
+  .btn-primary:hover { transform: translateY(-2px); }
+  article h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1rem; color: #fff; scroll-margin-top: 6rem; }
+  article h3 { font-size: 1.1rem; font-weight: 600; margin-top: 1.5rem; margin-bottom: .5rem; color: #e5e7eb; }
+  article p { margin-bottom: 1rem; color: #cbd5e1; line-height: 1.75; }
+  article ul { margin-bottom: 1rem; padding-left: 1.5rem; color: #cbd5e1; line-height: 1.85; }
+  article ul li { list-style: disc; margin-bottom: .25rem; }
+  article a { color: #00D4FF; text-decoration: underline; text-underline-offset: 3px; }
+  article a:hover { color: #8B5CF6; }
+  .toc a { display: block; padding: .35rem 0; color: #94a3b8; font-size: .875rem; transition: color .2s; border-left: 2px solid transparent; padding-left: .75rem; }
+  .toc a:hover { color: #00D4FF; border-color: #00D4FF; }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- NAV -->
+<nav class="fixed top-0 left-0 right-0 z-50 glass">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2 font-bold text-lg">
+      <span class="text-2xl">🐙</span>
+      <span class="text-gradient">SyntaxQuest</span>
+    </a>
+    <div class="hidden md:flex items-center gap-8 text-sm text-gray-300">
+      <a href="index.html#features" class="hover:text-primary transition">Características</a>
+      <a href="index.html#courses" class="hover:text-primary transition">Cursos</a>
+      <a href="index.html#pricing" class="hover:text-primary transition">Premium</a>
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+    </div>
+    <a href="index.html#download" class="btn-primary px-5 py-2 rounded-full text-sm font-semibold text-white">Descargar</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="grid-bg pt-36 pb-16 px-6 border-b border-white/5">
+  <div class="max-w-4xl mx-auto">
+    <div class="text-sm text-gray-500 mb-4">
+      <a href="index.html" class="hover:text-primary">Inicio</a> <span class="mx-2">›</span> Política de Privacidad
+    </div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Política de <span class="text-gradient">Privacidad</span></h1>
+    <p class="text-gray-400">Última actualización: Mayo 2026 · Versión 1.1</p>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-[260px_1fr] gap-12">
+  <!-- TOC -->
+  <aside class="lg:sticky lg:top-24 lg:self-start">
+    <div class="glass rounded-xl p-5">
+      <p class="text-xs uppercase tracking-widest text-gray-500 mb-3">Contenido</p>
+      <nav class="toc">
+        <a href="#intro">1. Introducción</a>
+        <a href="#data">2. Información que recopilamos</a>
+        <a href="#use">3. Cómo usamos la información</a>
+        <a href="#legal">4. Bases legales</a>
+        <a href="#cookies">5. Sitio web y cookies</a>
+        <a href="#storage">6. Almacenamiento y seguridad</a>
+        <a href="#third">7. Servicios de terceros</a>
+        <a href="#share">8. Compartición</a>
+        <a href="#rights">9. Derechos del usuario</a>
+        <a href="#gdpr">10. GDPR / CCPA / Perú</a>
+        <a href="#retention">11. Retención</a>
+        <a href="#minors">12. Privacidad de menores</a>
+        <a href="#international">13. Usuarios internacionales</a>
+        <a href="#a11y">14. Accesibilidad</a>
+        <a href="#changes">15. Cambios</a>
+        <a href="#contact">16. Contacto</a>
+      </nav>
+    </div>
+  </aside>
+
+  <!-- BODY -->
+  <article class="max-w-3xl">
+
+    <h2 id="intro">1. Introducción</h2>
+    <p>SyntaxQuest ("SyntaxQuest", "nosotros", "nuestra" o "la App"), operada por <strong>Altech Dev</strong>, respeta tu privacidad. Esta Política de Privacidad explica qué información recopilamos, cómo la usamos, cómo la compartimos y qué opciones tienes al utilizar nuestra aplicación móvil para iOS, watchOS, widgets, sitio web (<a href="index.html">syntaxquest.app</a>), contenido educativo, funciones comunitarias, suscripciones, anuncios y tutor de IA.</p>
+    <p>Al usar SyntaxQuest aceptas las prácticas descritas en esta Política. Si no estás de acuerdo, por favor no utilices la App.</p>
+
+    <h2 id="data">2. Información que recopilamos</h2>
+
+    <h3>2.1 Información de cuenta</h3>
+    <p>Cuando creas una cuenta, podemos recopilar tu nombre de usuario, dirección de correo electrónico, identificadores de autenticación, nombre visible, información de perfil proporcionada por inicio de sesión con Apple o Google, configuración de cuenta, estado de suscripción y comunicaciones de soporte.</p>
+
+    <h3>2.2 Datos de aprendizaje y progreso</h3>
+    <p>Recopilamos datos necesarios para operar la App, incluyendo lecciones completadas, respuestas de ejercicios, XP, rachas, gemas, logros, entradas de ranking, código guardado, preferencias, progreso de cursos, actividad de retos diarios, valoraciones y otros eventos de aprendizaje dentro de la App.</p>
+
+    <h3>2.3 Datos de dispositivo, uso y diagnóstico</h3>
+    <p>Podemos recopilar tipo de dispositivo, sistema operativo, versión de la app, idioma, país o región, eventos aproximados de uso, duración de sesión, interacciones con funciones, registros de fallos, datos de rendimiento e información de diagnóstico. Esto nos ayuda a mantener la confiabilidad, prevenir abusos y mejorar la App.</p>
+
+    <h3>2.4 Tutor IA y aprendizaje generativo</h3>
+    <p>Los mensajes, prompts, fragmentos de código, preguntas y contexto que envías al tutor IA o a funciones de aprendizaje guiado se procesan a través de nuestro backend y pueden reenviarse a proveedores externos de IA, incluyendo <strong>DeepSeek</strong> y <strong>OpenAI</strong>, para generar respuestas educativas. <strong>No envíes secretos, contraseñas, llaves privadas, datos financieros, datos de salud u otra información altamente sensible.</strong> No usamos intencionalmente las conversaciones del tutor para identificarte más allá de lo necesario para prestar, proteger y mejorar el servicio.</p>
+
+    <h3>2.5 Contenido comunitario</h3>
+    <p>Si usas funciones comunitarias, podemos procesar comentarios, nombres de usuario, reportes, señales de moderación, marcas de tiempo y metadatos relacionados. El contenido publicado en áreas comunitarias puede ser visible para otros usuarios.</p>
+
+    <h3>2.6 Información de compras y suscripciones</h3>
+    <p>Las compras y suscripciones son procesadas por Apple mediante StoreKit y la App Store. <strong>No recibimos ni almacenamos el número completo de tu tarjeta, datos bancarios o credenciales de facturación.</strong> Podemos recibir identificadores de transacción, estado de beneficios, identificadores de producto, fechas de expiración y estado de renovación necesarios para desbloquear compras y brindar soporte.</p>
+
+    <h3>2.7 Datos de publicidad</h3>
+    <p>Los usuarios gratuitos pueden ver anuncios servidos por <strong>Google AdMob</strong>. AdMob y sus socios pueden procesar identificadores publicitarios, información del dispositivo, ubicación aproximada, actividad en la app y datos de interacción con anuncios, sujeto a la configuración de tu dispositivo y a los consentimientos aplicables. Solicitamos permiso de App Tracking Transparency (ATT) antes de realizar rastreo que requiera consentimiento bajo las reglas de Apple.</p>
+
+    <h3>2.8 Notificaciones</h3>
+    <p>Si habilitas notificaciones, podemos usar tokens y configuraciones de notificación para enviar recordatorios de racha, aprendizaje, recompensas y mensajes de servicio. Puedes desactivarlas desde la configuración de tu dispositivo.</p>
+
+    <h2 id="use">3. Cómo usamos la información</h2>
+    <p>Usamos la información para:</p>
+    <ul>
+      <li>Operar, personalizar y mejorar la App</li>
+      <li>Guardar progreso, logros, rachas y preferencias</li>
+      <li>Proporcionar respuestas del tutor IA y aprendizaje guiado</li>
+      <li>Procesar compras, suscripciones, beneficios y restauraciones</li>
+      <li>Mostrar anuncios a usuarios gratuitos y medir su rendimiento</li>
+      <li>Operar rankings, retos, recompensas y funciones comunitarias</li>
+      <li>Detectar, prevenir e investigar fraude, trampas, spam, abuso, incidentes de seguridad e incumplimientos de nuestros Términos</li>
+      <li>Brindar soporte y responder solicitudes</li>
+      <li>Analizar rendimiento, fallos y uso de funciones</li>
+      <li>Cumplir obligaciones legales y hacer valer nuestros derechos</li>
+    </ul>
+
+    <h2 id="legal">4. Bases legales cuando se requieran</h2>
+    <p>Cuando la ley de privacidad aplicable exige una base legal, nos apoyamos en la ejecución de contrato, intereses legítimos, consentimiento, cumplimiento legal y protección de usuarios y de la App. Puedes retirar tu consentimiento cuando el tratamiento dependa de consentimiento, aunque esto puede limitar ciertas funciones.</p>
+
+    <h2 id="cookies">5. Sitio web y cookies</h2>
+    <p>El sitio web <a href="index.html">syntaxquest.app</a> es estático y <strong>no usa cookies de seguimiento, identificadores publicitarios ni analítica de terceros</strong>. Cargamos fuentes desde Google Fonts y librerías CSS desde una CDN para el correcto renderizado del sitio; estos servicios pueden registrar tu dirección IP de forma transitoria por motivos técnicos. No usamos píxeles de Facebook, Google Analytics ni servicios similares en este sitio web. La aplicación móvil sí utiliza herramientas de analítica descritas en la sección 7.</p>
+
+    <h2 id="storage">6. Almacenamiento, seguridad y transferencias</h2>
+    <p>El progreso puede almacenarse localmente en tu dispositivo y, si usas una cuenta o funciones en la nube, sincronizarse mediante <strong>Firebase Firestore</strong> y otros servicios de Google Cloud. Los datos pueden procesarse en Estados Unidos y otros países donde operen nuestros proveedores. Usamos medidas administrativas, técnicas y organizativas razonables, incluyendo HTTPS en tránsito, almacenamiento administrado de secretos para credenciales sensibles del servidor, autenticación con tokens Firebase y reglas de Firestore para control de acceso. Ningún método de transmisión o almacenamiento es completamente seguro.</p>
+
+    <h2 id="third">7. Servicios de terceros</h2>
+    <p>Usamos proveedores externos para operar la App:</p>
+    <ul>
+      <li><strong>Firebase y Google Cloud:</strong> autenticación, base de datos, analítica, hosting, seguridad e infraestructura backend</li>
+      <li><strong>Google AdMob:</strong> publicidad para usuarios gratuitos</li>
+      <li><strong>DeepSeek y OpenAI:</strong> respuestas del tutor IA, aprendizaje guiado e hints inteligentes a través de nuestro backend</li>
+      <li><strong>Apple StoreKit y App Store:</strong> compras, suscripciones, reembolsos, Compartir en Familia y gestión de suscripciones</li>
+      <li><strong>Judge0 CE:</strong> ejecución de código en lenguajes compilados (Java, Swift, Kotlin, C++, C#)</li>
+      <li><strong>Inicio de sesión con Apple y Google:</strong> autenticación cuando eliges esos métodos</li>
+    </ul>
+    <p>Estos servicios pueden procesar información bajo sus propios términos y políticas de privacidad. No somos responsables de prácticas de terceros fuera de nuestro control.</p>
+
+    <h2 id="share">8. Compartición de información</h2>
+    <p>No vendemos tu información personal en el sentido ordinario de venderla por dinero. Podemos compartir información con proveedores de servicio, socios de analítica y publicidad, proveedores de pago y plataforma, asesores profesionales, autoridades o reguladores cuando sea legalmente requerido, y sucesores en una fusión, adquisición, financiamiento, reestructuración o transferencia de activos. La información de rankings y comunidad puede ser visible para otros usuarios.</p>
+
+    <h2 id="rights">9. Tus opciones y derechos</h2>
+    <p>Dependiendo de tu ubicación, puedes tener derechos de acceso, corrección, eliminación, exportación, restricción u oposición a ciertos tratamientos de tu información personal. Puedes solicitar eliminación de cuenta o datos contactándonos. También puedes gestionar notificaciones, rastreo publicitario, configuración de privacidad de Apple, suscripciones y datos locales desde tu dispositivo o cuenta de App Store. Podemos necesitar verificar tu identidad antes de completar ciertas solicitudes.</p>
+
+    <h2 id="gdpr">10. Derechos específicos por región</h2>
+
+    <h3>10.1 Espacio Económico Europeo y Reino Unido (RGPD/UK GDPR)</h3>
+    <p>Si resides en el EEE o Reino Unido, tienes derecho a: acceso, rectificación, supresión ("derecho al olvido"), limitación del tratamiento, portabilidad, oposición y a no ser sometido a decisiones automatizadas. También puedes presentar una reclamación ante la autoridad de protección de datos de tu país.</p>
+
+    <h3>10.2 California (CCPA/CPRA)</h3>
+    <p>Si resides en California, tienes derecho a saber qué información personal recopilamos, a solicitar su eliminación, a corregirla, a optar por no compartirla y a no recibir un trato discriminatorio por ejercer tus derechos. <strong>No vendemos información personal de menores de 16 años.</strong></p>
+
+    <h3>10.3 Perú (Ley 29733) y LATAM</h3>
+    <p>Como desarrollador establecido en Perú, cumplimos con la Ley N° 29733 de Protección de Datos Personales y su reglamento. Puedes ejercer tus derechos ARCO (Acceso, Rectificación, Cancelación, Oposición) escribiéndonos. La Autoridad Nacional de Protección de Datos Personales (ANPD) es competente para recibir reclamos. Para usuarios de México, Colombia, Argentina, Chile y otros países LATAM, respetamos los derechos equivalentes bajo las leyes locales de protección de datos.</p>
+
+    <h2 id="retention">11. Retención de datos</h2>
+    <p>Conservamos información mientras sea necesaria para proporcionar la App, mantener tu cuenta, cumplir obligaciones legales, resolver disputas, prevenir abusos y hacer cumplir nuestros acuerdos. El progreso de invitado puede permanecer solo en tu dispositivo. Los datos de ranking pueden reiniciarse periódicamente. El contenido de sesiones del tutor IA no está destinado a conservarse permanentemente, aunque registros limitados, datos de prevención de abuso, copias de seguridad o procesamiento del proveedor pueden persistir por un periodo limitado según sea necesario para operar y proteger el servicio. Cuando eliminas tu cuenta, borraremos o anonimizaremos tus datos personales en un plazo máximo de 30 días, salvo aquellos que debamos conservar por obligación legal.</p>
+
+    <h2 id="minors">12. Privacidad de menores</h2>
+    <p>SyntaxQuest es una app educativa con clasificación apta para audiencias amplias. <strong>No recopilamos intencionalmente información personal de menores de 13 años</strong>, o la edad mínima aplicable en su jurisdicción, sin el consentimiento requerido de padres o tutores. Padres o tutores pueden contactarnos para solicitar revisión o eliminación de la información de un menor.</p>
+
+    <h2 id="international">13. Usuarios internacionales</h2>
+    <p>Si usas la App fuera de Perú, donde opera el desarrollador, tu información puede transferirse y procesarse en países con leyes de protección de datos diferentes (especialmente Estados Unidos, donde se aloja Firebase/Google Cloud). Al usar la App, entiendes que dichas transferencias pueden ocurrir cuando sean necesarias para prestar el servicio, y se realizarán con las salvaguardias contractuales requeridas (Cláusulas Contractuales Tipo de la UE cuando corresponda).</p>
+
+    <h2 id="a11y">14. Accesibilidad</h2>
+    <p>Trabajamos para que SyntaxQuest sea accesible. La App soporta VoiceOver, Dynamic Type y reducción de movimiento. El sitio web sigue las pautas WCAG 2.1 AA en la medida de lo razonable. Si encuentras una barrera de accesibilidad, escríbenos y trabajaremos para resolverla.</p>
+
+    <h2 id="changes">15. Cambios a esta política</h2>
+    <p>Podemos actualizar esta Política de Privacidad periódicamente. Si los cambios son materiales, notificaremos a través de la App, la ficha de App Store, el sitio web u otro método razonable. La fecha de "Última actualización" en la parte superior siempre indicará cuándo se publicó la versión vigente. El uso continuado de la App después de la fecha de entrada en vigor significa que aplica la política actualizada.</p>
+
+    <h2 id="contact">16. Contacto</h2>
+    <p>Para preguntas de privacidad, solicitudes de derechos o eliminación de datos, contáctanos en:</p>
+    <p><strong>Altech Dev</strong><br/>
+    Email: <a href="mailto:support@altechdev.test">support@altechdev.test</a><br/>
+    Asunto sugerido: "Privacidad — [tu solicitud]"</p>
+    <p>También puedes visitar nuestro <a href="support.html">Centro de Soporte</a> para ayuda con tu cuenta o suscripción.</p>
+
+    <hr class="my-12 border-white/10" />
+    <div class="flex flex-wrap gap-3 text-sm">
+      <a href="terms.html" class="px-4 py-2 rounded-full glass hover:border-primary/40 transition">→ Términos de Servicio</a>
+      <a href="support.html" class="px-4 py-2 rounded-full glass hover:border-primary/40 transition">→ Centro de Soporte</a>
+    </div>
+  </article>
+</div>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/5 py-10 px-6">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+    <div class="flex items-center gap-2">
+      <span class="text-2xl">🐙</span>
+      <span>© 2026 Altech Dev. Todos los derechos reservados.</span>
+    </div>
+    <div class="flex gap-6">
+      <a href="index.html" class="hover:text-primary transition">Inicio</a>
+      <a href="support.html" class="hover:text-primary transition">Soporte</a>
+      <a href="terms.html" class="hover:text-primary transition">Términos</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
